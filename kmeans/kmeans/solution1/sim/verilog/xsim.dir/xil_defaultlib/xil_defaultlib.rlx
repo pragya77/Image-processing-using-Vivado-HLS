@@ -1,0 +1,10 @@
+0.6
+2016.3
+Oct 10 2016
+19:46:48
+W:/Desktop/kmeans/kmeans/solution1/sim/verilog/AESL_automem_final.v,1585532838,systemVerilog,,,,AESL_automem_final,C:/Xilinx/Vivado/2016.3/bin/../data/xsim/ip/xsim_ip.ini,ieee_proposed=./ieee_proposed,,,,,,
+W:/Desktop/kmeans/kmeans/solution1/sim/verilog/AESL_automem_image_in.v,1585532838,systemVerilog,,,,AESL_automem_image_in,C:/Xilinx/Vivado/2016.3/bin/../data/xsim/ip/xsim_ip.ini,ieee_proposed=./ieee_proposed,,,,,,
+W:/Desktop/kmeans/kmeans/solution1/sim/verilog/kmeans.autotb.v,1585532838,systemVerilog,,,,apatb_kmeans_top,C:/Xilinx/Vivado/2016.3/bin/../data/xsim/ip/xsim_ip.ini,ieee_proposed=./ieee_proposed,,,,,,
+W:/Desktop/kmeans/kmeans/solution1/sim/verilog/kmeans.v,1585532756,systemVerilog,,,,kmeans,C:/Xilinx/Vivado/2016.3/bin/../data/xsim/ip/xsim_ip.ini,ieee_proposed=./ieee_proposed,,,,,,
+W:/Desktop/kmeans/kmeans/solution1/sim/verilog/kmeans_empty.v,1585532758,systemVerilog,,,,kmeans_empty;kmeans_empty_ram,C:/Xilinx/Vivado/2016.3/bin/../data/xsim/ip/xsim_ip.ini,ieee_proposed=./ieee_proposed,,,,,,
+W:/Desktop/kmeans/kmeans/solution1/sim/verilog/kmeans_mux_42_32_1.v,1585532758,systemVerilog,,,,kmeans_mux_42_32_1,C:/Xilinx/Vivado/2016.3/bin/../data/xsim/ip/xsim_ip.ini,ieee_proposed=./ieee_proposed,,,,,,

@@ -1,0 +1,90 @@
+@I [SIM-47] Using XSIM for RTL simulation.
+@I [SIM-14] Instrumenting C test bench ...
+   Build using "C:/Xilinx/Vivado_HLS/2016.3/msys/bin/g++.exe"
+   Compiling apatb_sobel.cpp
+   Compiling (apcc) sobel.c_pre.c.tb.c
+INFO: [HLS 200-10] Running 'c:/Xilinx/Vivado_HLS/2016.3/bin/unwrapped/win64.o/apcc.exe'
+INFO: [HLS 200-10] For user 'pragyapusppusp' on host 'winap-me5159-05' (Windows NT_amd64 version 6.2) on Sun Mar 29 23:31:37 -0400 2020
+INFO: [HLS 200-10] In directory 'W:/Desktop/sobel1/sobel/solution1/sim/wrapc'
+clang: warning: argument unused during compilation: '-fno-builtin-isinf'
+clang: warning: argument unused during compilation: '-fno-builtin-isnan'
+INFO: [APCC 202-3] Tmp directory is apcc_db
+INFO: [APCC 202-1] APCC is done.
+   Compiling (apcc) test.c_pre.c.tb.c
+INFO: [HLS 200-10] Running 'c:/Xilinx/Vivado_HLS/2016.3/bin/unwrapped/win64.o/apcc.exe'
+INFO: [HLS 200-10] For user 'pragyapusppusp' on host 'winap-me5159-05' (Windows NT_amd64 version 6.2) on Sun Mar 29 23:31:40 -0400 2020
+INFO: [HLS 200-10] In directory 'W:/Desktop/sobel1/sobel/solution1/sim/wrapc'
+clang: warning: argument unused during compilation: '-fno-builtin-isinf'
+clang: warning: argument unused during compilation: '-fno-builtin-isnan'
+INFO: [APCC 202-3] Tmp directory is apcc_db
+INFO: [APCC 202-1] APCC is done.
+   Generating cosim.tv.exe
+@I [SIM-302] Starting C TB testing ... 
+@I [SIM-333] Generating C post check test bench ...
+@I [SIM-12] Generating RTL test bench ...
+@I [SIM-323] Starting verilog simulation. 
+@I [SIM-15] Starting XSIM ...
+@I [SIM-316] Starting C post checking ...
+
+W:\Desktop\sobel1\sobel\solution1\sim\verilog>call xelab xil_defaultlib.apatb_sobel_top -prj sobel.prj --initfile "C:/Xilinx/Vivado/2016.3/bin/../data/xsim/ip/xsim_ip.ini" --lib "ieee_proposed=./ieee_proposed" -s sobel  
+INFO: [XSIM 43-3496] Using init file passed via -initfile option "C:/Xilinx/Vivado/2016.3/bin/../data/xsim/ip/xsim_ip.ini".
+Vivado Simulator 2016.3
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2016.3/bin/unwrapped/win64.o/xelab.exe xil_defaultlib.apatb_sobel_top -prj sobel.prj --initfile C:/Xilinx/Vivado/2016.3/bin/../data/xsim/ip/xsim_ip.ini --lib ieee_proposed=./ieee_proposed -s sobel 
+Multi-threading is on. Using 30 slave threads.
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "W:/Desktop/sobel1/sobel/solution1/sim/verilog/sobel.autotb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apatb_sobel_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "W:/Desktop/sobel1/sobel/solution1/sim/verilog/AESL_automem_input_image.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_input_image
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "W:/Desktop/sobel1/sobel/solution1/sim/verilog/AESL_automem_output_image.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_automem_output_image
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "W:/Desktop/sobel1/sobel/solution1/sim/verilog/sobel.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sobel
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "W:/Desktop/sobel1/sobel/solution1/sim/verilog/sobel_sdiv_32ns_3bkb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sobel_sdiv_32ns_3bkb_div_u
+INFO: [VRFC 10-311] analyzing module sobel_sdiv_32ns_3bkb_div
+INFO: [VRFC 10-311] analyzing module sobel_sdiv_32ns_3bkb
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "W:/Desktop/sobel1/sobel/solution1/sim/verilog/sobel_image.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sobel_image_ram
+INFO: [VRFC 10-311] analyzing module sobel_image
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.sobel_image_ram
+Compiling module xil_defaultlib.sobel_image(DataWidth=32,Address...
+Compiling module xil_defaultlib.sobel_sdiv_32ns_3bkb_div_u(in0_W...
+Compiling module xil_defaultlib.sobel_sdiv_32ns_3bkb_div(in0_WID...
+Compiling module xil_defaultlib.sobel_sdiv_32ns_3bkb(ID=1,NUM_ST...
+Compiling module xil_defaultlib.sobel
+Compiling module xil_defaultlib.AESL_automem_input_image
+Compiling module xil_defaultlib.AESL_automem_output_image
+Compiling module xil_defaultlib.apatb_sobel_top
+Built simulation snapshot sobel
+
+****** xsim v2016.3 (64-bit)
+  **** SW Build 1682563 on Mon Oct 10 19:07:27 MDT 2016
+  **** IP Build 1681267 on Mon Oct 10 21:28:31 MDT 2016
+    ** Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+
+source xsim.dir/sobel/xsim_script.tcl
+# xsim {sobel} -autoloadwcfg -tclbatch {sobel.tcl}
+Vivado Simulator 2016.3
+Time resolution is 1 ps
+source sobel.tcl
+## run all
+////////////////////////////////////////////////////////////////////////////////////
+// Inter-Transaction Progress: Completed Transaction / Total Transaction
+// Intra-Transaction Progress: Measured Latency / Latency Estimation * 100%
+//
+// RTL Simulation : "Inter-Transaction Progress" ["Intra-Transaction Progress"] @ "Simulation Time"
+////////////////////////////////////////////////////////////////////////////////////
+// RTL Simulation : 0 / 1 [0.00%] @ "125000"
+// RTL Simulation : 1 / 1 [0.00%] @ "29723425000"
+////////////////////////////////////////////////////////////////////////////////////
+$finish called at time : 29723465 ns : File "W:/Desktop/sobel1/sobel/solution1/sim/verilog/sobel.autotb.v" Line 287
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:23 . Memory (MB): peak = 207.207 ; gain = 0.000
+## quit
+INFO: [Common 17-206] Exiting xsim at Sun Mar 29 23:32:19 2020...
+@I [SIM-1000] *** C/RTL co-simulation finished: PASS ***

@@ -1,0 +1,4 @@
+
+call xelab xil_defaultlib.apatb_sobel_top -prj sobel.prj --initfile "C:/Xilinx/Vivado/2016.3/bin/../data/xsim/ip/xsim_ip.ini" --lib "ieee_proposed=./ieee_proposed" -s sobel 
+call xsim --noieeewarnings sobel -tclbatch sobel.tcl
+

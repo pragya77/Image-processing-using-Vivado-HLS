@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="kmeans.c" path="W:\Desktop\kmeans\kmeans.c"/>
+  </source>
+  <testbench>
+    <originFiles name="test.c" path="W:\Desktop\kmeans\test.c"/>
+  </testbench>
+</autopilotfilemapping:AutoPilotFileMapping>

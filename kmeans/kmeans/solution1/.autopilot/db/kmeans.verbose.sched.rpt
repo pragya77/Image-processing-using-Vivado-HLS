@@ -1,0 +1,951 @@
+
+
+================================================================
+== Vivado HLS Report for 'kmeans'
+================================================================
+* Date:           Sun Mar 29 21:45:54 2020
+
+* Version:        2016.3 (Build 1682563 on Mon Oct 10 19:41:59 MDT 2016)
+* Project:        kmeans
+* Solution:       solution1
+* Product family: zynq
+* Target device:  xc7z020clg400-3
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|      7.16|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +---------+---------+---------+---------+---------+
+    |      Latency      |      Interval     | Pipeline|
+    |   min   |   max   |   min   |   max   |   Type  |
+    +---------+---------+---------+---------+---------+
+    |  1246723|  1246723|  1246724|  1246724|   none  |
+    +---------+---------+---------+---------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-----------------+--------+--------+----------+-----------+-----------+------+----------+
+        |                 |     Latency     | Iteration|  Initiation Interval  | Trip |          |
+        |    Loop Name    |   min  |   max  |  Latency |  achieved |   target  | Count| Pipelined|
+        +-----------------+--------+--------+----------+-----------+-----------+------+----------+
+        |- Loop 1         |   66048|   66048|       258|          -|          -|   256|    no    |
+        | + Loop 1.1      |     256|     256|         1|          -|          -|   256|    no    |
+        |- Loop 2         |  721408|  721408|      2818|          -|          -|   256|    no    |
+        | + Loop 2.1      |    2816|    2816|        11|          -|          -|   256|    no    |
+        |  ++ Loop 2.1.1  |       4|       4|         1|          -|          -|     4|    no    |
+        |  ++ Loop 2.1.2  |       3|       3|         1|          -|          -|     3|    no    |
+        |- Loop 3         |  459264|  459264|      1794|          -|          -|   256|    no    |
+        | + Loop 3.1      |    1792|    1792|         7|          -|          -|   256|    no    |
+        +-----------------+--------+--------+----------+-----------+-----------+------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 1
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states: 16
+* Pipeline: 0
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+	2  / true
+2 --> 
+	3  / (!exitcond1)
+	4  / (exitcond1)
+3 --> 
+	3  / (!exitcond3)
+	2  / (exitcond3)
+4 --> 
+	5  / (!exitcond2)
+	9  / (exitcond2)
+5 --> 
+	6  / (!exitcond5)
+	4  / (exitcond5)
+6 --> 
+	7  / true
+7 --> 
+	7  / (!exitcond8)
+	8  / (exitcond8)
+8 --> 
+	8  / (!exitcond9)
+	5  / (exitcond9)
+9 --> 
+	10  / (!exitcond6)
+10 --> 
+	11  / (!exitcond)
+	9  / (exitcond)
+11 --> 
+	12  / true
+12 --> 
+	13  / true
+13 --> 
+	14  / true
+14 --> 
+	15  / true
+15 --> 
+	16  / true
+16 --> 
+	10  / true
+* FSM state operations: 
+
+ <State 1>: 1.16ns
+ST_1: StgValue_17 (3)  [1/1] 0.00ns
+:0  call void (...)* @_ssdm_op_SpecBitsMap([65536 x i16]* %image_in) nounwind, !map !7
+
+ST_1: StgValue_18 (4)  [1/1] 0.00ns
+:1  call void (...)* @_ssdm_op_SpecBitsMap([65536 x i16]* %final) nounwind, !map !13
+
+ST_1: StgValue_19 (5)  [1/1] 0.00ns
+:2  call void (...)* @_ssdm_op_SpecTopModule([7 x i8]* @kmeans_str) nounwind
+
+ST_1: empty (6)  [1/1] 0.00ns  loc: kmeans.c:17
+:3  %empty = alloca [65536 x i16], align 2
+
+ST_1: empty_3 (7)  [1/1] 0.00ns  loc: kmeans.c:18
+:4  %empty_3 = alloca [65536 x i16], align 2
+
+ST_1: empty_4 (8)  [1/1] 0.00ns  loc: kmeans.c:19
+:5  %empty_4 = alloca [65536 x i16], align 2
+
+ST_1: empty_5 (9)  [1/1] 0.00ns  loc: kmeans.c:20
+:6  %empty_5 = alloca [65536 x i16], align 2
+
+ST_1: StgValue_24 (10)  [1/1] 1.16ns  loc: kmeans.c:39
+:7  br label %.loopexit
+
+
+ <State 2>: 1.43ns
+ST_2: s (12)  [1/1] 0.00ns
+.loopexit:0  %s = phi i9 [ 0, %0 ], [ %s_1, %.loopexit.loopexit ]
+
+ST_2: exitcond1 (13)  [1/1] 1.42ns  loc: kmeans.c:39
+.loopexit:1  %exitcond1 = icmp eq i9 %s, -256
+
+ST_2: empty_6 (14)  [1/1] 0.00ns
+.loopexit:2  %empty_6 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 256, i64 256, i64 256) nounwind
+
+ST_2: s_1 (15)  [1/1] 1.43ns  loc: kmeans.c:39
+.loopexit:3  %s_1 = add i9 %s, 1
+
+ST_2: StgValue_29 (16)  [1/1] 0.00ns  loc: kmeans.c:39
+.loopexit:4  br i1 %exitcond1, label %.preheader39.preheader, label %.preheader40.preheader
+
+ST_2: tmp_2 (18)  [1/1] 0.00ns  loc: kmeans.c:39
+.preheader40.preheader:0  %tmp_2 = trunc i9 %s to i8
+
+ST_2: tmp_1 (19)  [1/1] 0.00ns  loc: kmeans.c:43
+.preheader40.preheader:1  %tmp_1 = call i16 @_ssdm_op_BitConcatenate.i16.i8.i8(i8 %tmp_2, i8 0)
+
+ST_2: StgValue_32 (20)  [1/1] 1.16ns  loc: kmeans.c:41
+.preheader40.preheader:2  br label %.preheader40
+
+ST_2: cluster (43)  [1/1] 0.00ns
+.preheader39.preheader:0  %cluster = alloca i16
+
+ST_2: ab_3_6 (44)  [1/1] 0.00ns
+.preheader39.preheader:1  %ab_3_6 = alloca i16
+
+ST_2: ab_3_9 (45)  [1/1] 0.00ns
+.preheader39.preheader:2  %ab_3_9 = alloca i16
+
+ST_2: ab_3_10 (46)  [1/1] 0.00ns
+.preheader39.preheader:3  %ab_3_10 = alloca i16
+
+ST_2: ab_3_11 (47)  [1/1] 0.00ns
+.preheader39.preheader:4  %ab_3_11 = alloca i16
+
+ST_2: StgValue_38 (48)  [1/1] 1.16ns
+.preheader39.preheader:5  store i16 0, i16* %cluster
+
+ST_2: StgValue_39 (49)  [1/1] 1.16ns  loc: kmeans.c:57
+.preheader39.preheader:6  br label %.preheader39
+
+
+ <State 3>: 3.63ns
+ST_3: t (22)  [1/1] 0.00ns
+.preheader40:0  %t = phi i9 [ %t_1, %1 ], [ 0, %.preheader40.preheader ]
+
+ST_3: t_cast (23)  [1/1] 0.00ns  loc: kmeans.c:41
+.preheader40:1  %t_cast = zext i9 %t to i16
+
+ST_3: exitcond3 (24)  [1/1] 1.42ns  loc: kmeans.c:41
+.preheader40:2  %exitcond3 = icmp eq i9 %t, -256
+
+ST_3: empty_7 (25)  [1/1] 0.00ns
+.preheader40:3  %empty_7 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 256, i64 256, i64 256) nounwind
+
+ST_3: t_1 (26)  [1/1] 1.43ns  loc: kmeans.c:41
+.preheader40:4  %t_1 = add i9 %t, 1
+
+ST_3: StgValue_45 (27)  [1/1] 0.00ns  loc: kmeans.c:41
+.preheader40:5  br i1 %exitcond3, label %.loopexit.loopexit, label %1
+
+ST_3: p_sum1 (29)  [1/1] 1.53ns  loc: kmeans.c:43
+:0  %p_sum1 = add i16 %tmp_1, %t_cast
+
+ST_3: p_sum1_cast (30)  [1/1] 0.00ns  loc: kmeans.c:43
+:1  %p_sum1_cast = zext i16 %p_sum1 to i32
+
+ST_3: p_addr (31)  [1/1] 0.00ns  loc: kmeans.c:43
+:2  %p_addr = getelementptr inbounds [65536 x i16]* %empty, i32 0, i32 %p_sum1_cast
+
+ST_3: StgValue_49 (32)  [1/1] 2.10ns  loc: kmeans.c:43
+:3  store i16 0, i16* %p_addr, align 2
+
+ST_3: p_addr_1 (33)  [1/1] 0.00ns  loc: kmeans.c:44
+:4  %p_addr_1 = getelementptr inbounds [65536 x i16]* %empty_3, i32 0, i32 %p_sum1_cast
+
+ST_3: StgValue_51 (34)  [1/1] 2.10ns  loc: kmeans.c:44
+:5  store i16 0, i16* %p_addr_1, align 2
+
+ST_3: p_addr_2 (35)  [1/1] 0.00ns  loc: kmeans.c:45
+:6  %p_addr_2 = getelementptr inbounds [65536 x i16]* %empty_4, i32 0, i32 %p_sum1_cast
+
+ST_3: StgValue_53 (36)  [1/1] 2.10ns  loc: kmeans.c:45
+:7  store i16 0, i16* %p_addr_2, align 2
+
+ST_3: p_addr_3 (37)  [1/1] 0.00ns  loc: kmeans.c:46
+:8  %p_addr_3 = getelementptr inbounds [65536 x i16]* %empty_5, i32 0, i32 %p_sum1_cast
+
+ST_3: StgValue_55 (38)  [1/1] 2.10ns  loc: kmeans.c:46
+:9  store i16 0, i16* %p_addr_3, align 2
+
+ST_3: StgValue_56 (39)  [1/1] 0.00ns  loc: kmeans.c:41
+:10  br label %.preheader40
+
+ST_3: StgValue_57 (41)  [1/1] 0.00ns
+.loopexit.loopexit:0  br label %.loopexit
+
+
+ <State 4>: 1.43ns
+ST_4: i (51)  [1/1] 0.00ns
+.preheader39:0  %i = phi i9 [ 0, %.preheader39.preheader ], [ %i_1, %.preheader39.loopexit ]
+
+ST_4: exitcond2 (52)  [1/1] 1.42ns  loc: kmeans.c:57
+.preheader39:1  %exitcond2 = icmp eq i9 %i, -256
+
+ST_4: empty_8 (53)  [1/1] 0.00ns
+.preheader39:2  %empty_8 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 256, i64 256, i64 256) nounwind
+
+ST_4: i_1 (54)  [1/1] 1.43ns  loc: kmeans.c:57
+.preheader39:3  %i_1 = add i9 %i, 1
+
+ST_4: StgValue_62 (55)  [1/1] 0.00ns  loc: kmeans.c:57
+.preheader39:4  br i1 %exitcond2, label %.preheader36.preheader, label %.preheader38.preheader
+
+ST_4: tmp_6 (57)  [1/1] 0.00ns  loc: kmeans.c:57
+.preheader38.preheader:0  %tmp_6 = call i17 @_ssdm_op_BitConcatenate.i17.i9.i8(i9 %i, i8 0)
+
+ST_4: tmp_21_cast (58)  [1/1] 0.00ns  loc: kmeans.c:57
+.preheader38.preheader:1  %tmp_21_cast = zext i17 %tmp_6 to i18
+
+ST_4: tmp_5 (59)  [1/1] 0.00ns  loc: kmeans.c:57
+.preheader38.preheader:2  %tmp_5 = trunc i9 %i to i8
+
+ST_4: tmp_3 (60)  [1/1] 0.00ns  loc: kmeans.c:80
+.preheader38.preheader:3  %tmp_3 = call i16 @_ssdm_op_BitConcatenate.i16.i8.i8(i8 %tmp_5, i8 0)
+
+ST_4: StgValue_67 (61)  [1/1] 1.16ns  loc: kmeans.c:59
+.preheader38.preheader:4  br label %.preheader38
+
+ST_4: StgValue_68 (182)  [1/1] 1.16ns  loc: kmeans.c:125
+.preheader36.preheader:0  br label %.preheader36
+
+
+ <State 5>: 3.73ns
+ST_5: j (63)  [1/1] 0.00ns
+.preheader38:0  %j = phi i9 [ 0, %.preheader38.preheader ], [ %j_1, %._crit_edge44 ]
+
+ST_5: exitcond5 (64)  [1/1] 1.42ns  loc: kmeans.c:59
+.preheader38:1  %exitcond5 = icmp eq i9 %j, -256
+
+ST_5: empty_9 (65)  [1/1] 0.00ns
+.preheader38:2  %empty_9 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 256, i64 256, i64 256) nounwind
+
+ST_5: j_1 (66)  [1/1] 1.43ns  loc: kmeans.c:59
+.preheader38:3  %j_1 = add i9 %j, 1
+
+ST_5: StgValue_73 (67)  [1/1] 0.00ns  loc: kmeans.c:59
+.preheader38:4  br i1 %exitcond5, label %.preheader39.loopexit, label %2
+
+ST_5: tmp_cast1 (69)  [1/1] 0.00ns  loc: kmeans.c:61
+:0  %tmp_cast1 = zext i9 %j to i18
+
+ST_5: tmp_21 (70)  [1/1] 1.63ns  loc: kmeans.c:61
+:1  %tmp_21 = add i18 %tmp_21_cast, %tmp_cast1
+
+ST_5: tmp_26_cast (71)  [1/1] 0.00ns  loc: kmeans.c:61
+:2  %tmp_26_cast = zext i18 %tmp_21 to i32
+
+ST_5: image_in_addr (72)  [1/1] 0.00ns  loc: kmeans.c:61
+:3  %image_in_addr = getelementptr [65536 x i16]* %image_in, i32 0, i32 %tmp_26_cast
+
+ST_5: r (74)  [2/2] 2.10ns  loc: kmeans.c:61
+:5  %r = load i16* %image_in_addr, align 2
+
+ST_5: StgValue_79 (180)  [1/1] 0.00ns
+.preheader39.loopexit:0  br label %.preheader39
+
+
+ <State 6>: 2.10ns
+ST_6: tmp_cast (73)  [1/1] 0.00ns  loc: kmeans.c:61
+:4  %tmp_cast = zext i9 %j to i16
+
+ST_6: r (74)  [1/2] 2.10ns  loc: kmeans.c:61
+:5  %r = load i16* %image_in_addr, align 2
+
+ST_6: tmp_4 (75)  [1/1] 0.00ns  loc: kmeans.c:65
+:6  %tmp_4 = sext i16 %r to i32
+
+ST_6: StgValue_83 (76)  [1/1] 1.16ns  loc: kmeans.c:63
+:7  br label %3
+
+
+ <State 7>: 6.88ns
+ST_7: p (78)  [1/1] 0.00ns
+:0  %p = phi i3 [ 0, %2 ], [ %p_1, %_ifconv ]
+
+ST_7: min_1 (79)  [1/1] 0.00ns
+:1  %min_1 = load i16* %ab_3_6
+
+ST_7: exitcond8 (80)  [1/1] 1.12ns  loc: kmeans.c:63
+:2  %exitcond8 = icmp eq i3 %p, -4
+
+ST_7: empty_10 (81)  [1/1] 0.00ns
+:3  %empty_10 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 4, i64 4, i64 4) nounwind
+
+ST_7: p_1 (82)  [1/1] 0.63ns  loc: kmeans.c:63
+:4  %p_1 = add i3 %p, 1
+
+ST_7: StgValue_89 (83)  [1/1] 0.00ns  loc: kmeans.c:63
+:5  br i1 %exitcond8, label %.preheader50.preheader, label %_ifconv
+
+ST_7: ab_3_9_load (85)  [1/1] 0.00ns
+_ifconv:0  %ab_3_9_load = load i16* %ab_3_9
+
+ST_7: ab_3_10_load (86)  [1/1] 0.00ns
+_ifconv:1  %ab_3_10_load = load i16* %ab_3_10
+
+ST_7: ab_3_11_load (87)  [1/1] 0.00ns
+_ifconv:2  %ab_3_11_load = load i16* %ab_3_11
+
+ST_7: tmp_23 (88)  [1/1] 0.00ns  loc: kmeans.c:63
+_ifconv:3  %tmp_23 = trunc i3 %p to i2
+
+ST_7: tmp (89)  [1/1] 0.00ns  loc: kmeans.c:63 (grouped into LUT with out node tmp_8)
+_ifconv:4  %tmp = call i32 @_ssdm_op_Mux.ap_auto.4i32.i2(i32 5, i32 40, i32 80, i32 180, i2 %tmp_23) nounwind
+
+ST_7: tmp_8 (90)  [1/1] 1.93ns  loc: kmeans.c:65 (out node of the LUT)
+_ifconv:5  %tmp_8 = sub nsw i32 %tmp_4, %tmp
+
+ST_7: tmp_24 (91)  [1/1] 0.00ns  loc: kmeans.c:65
+_ifconv:6  %tmp_24 = trunc i32 %tmp_8 to i16
+
+ST_7: abscond (92)  [1/1] 1.83ns  loc: kmeans.c:65
+_ifconv:7  %abscond = icmp sgt i32 %tmp_8, 0
+
+ST_7: tmp_11 (93)  [1/1] 1.53ns  loc: kmeans.c:65
+_ifconv:8  %tmp_11 = sub i16 0, %tmp_24
+
+ST_7: ab_0 (94)  [1/1] 1.04ns  loc: kmeans.c:65
+_ifconv:9  %ab_0 = select i1 %abscond, i16 %tmp_24, i16 %tmp_11
+
+ST_7: sel_tmp (95)  [1/1] 1.00ns  loc: kmeans.c:63
+_ifconv:10  %sel_tmp = icmp eq i2 %tmp_23, -2
+
+ST_7: ab_3 (96)  [1/1] 0.00ns  loc: kmeans.c:63 (grouped into LUT with out node ab_3_1)
+_ifconv:11  %ab_3 = select i1 %sel_tmp, i16 %ab_3_11_load, i16 %ab_0
+
+ST_7: sel_tmp2 (97)  [1/1] 1.00ns  loc: kmeans.c:63
+_ifconv:12  %sel_tmp2 = icmp eq i2 %tmp_23, 1
+
+ST_7: ab_3_1 (98)  [1/1] 1.04ns  loc: kmeans.c:63 (out node of the LUT)
+_ifconv:13  %ab_3_1 = select i1 %sel_tmp2, i16 %ab_3_11_load, i16 %ab_3
+
+ST_7: sel_tmp4 (99)  [1/1] 1.00ns  loc: kmeans.c:63
+_ifconv:14  %sel_tmp4 = icmp eq i2 %tmp_23, 0
+
+ST_7: ab_3_2 (100)  [1/1] 1.04ns  loc: kmeans.c:63 (out node of the LUT)
+_ifconv:15  %ab_3_2 = select i1 %sel_tmp4, i16 %ab_3_11_load, i16 %ab_3_1
+
+ST_7: ab_3_3 (101)  [1/1] 0.00ns  loc: kmeans.c:63 (grouped into LUT with out node ab_3_4)
+_ifconv:16  %ab_3_3 = select i1 %sel_tmp, i16 %ab_0, i16 %ab_3_10_load
+
+ST_7: ab_3_4 (102)  [1/1] 1.04ns  loc: kmeans.c:63 (out node of the LUT)
+_ifconv:17  %ab_3_4 = select i1 %sel_tmp2, i16 %ab_3_10_load, i16 %ab_3_3
+
+ST_7: ab_3_5 (103)  [1/1] 1.04ns  loc: kmeans.c:63 (out node of the LUT)
+_ifconv:18  %ab_3_5 = select i1 %sel_tmp4, i16 %ab_3_10_load, i16 %ab_3_4
+
+ST_7: ab_3_7 (104)  [1/1] 0.00ns  loc: kmeans.c:63 (grouped into LUT with out node ab_3_8)
+_ifconv:19  %ab_3_7 = select i1 %sel_tmp2, i16 %ab_0, i16 %ab_3_9_load
+
+ST_7: ab_3_8 (105)  [1/1] 1.04ns  loc: kmeans.c:63 (out node of the LUT)
+_ifconv:20  %ab_3_8 = select i1 %sel_tmp4, i16 %ab_3_9_load, i16 %ab_3_7
+
+ST_7: ab_3_14 (106)  [1/1] 1.04ns  loc: kmeans.c:63
+_ifconv:21  %ab_3_14 = select i1 %sel_tmp4, i16 %ab_0, i16 %min_1
+
+ST_7: StgValue_112 (107)  [1/1] 0.00ns  loc: kmeans.c:65
+_ifconv:22  store i16 %ab_3_2, i16* %ab_3_11
+
+ST_7: StgValue_113 (108)  [1/1] 0.00ns  loc: kmeans.c:65
+_ifconv:23  store i16 %ab_3_5, i16* %ab_3_10
+
+ST_7: StgValue_114 (109)  [1/1] 0.00ns  loc: kmeans.c:65
+_ifconv:24  store i16 %ab_3_8, i16* %ab_3_9
+
+ST_7: StgValue_115 (110)  [1/1] 0.00ns  loc: kmeans.c:65
+_ifconv:25  store i16 %ab_3_14, i16* %ab_3_6
+
+ST_7: StgValue_116 (111)  [1/1] 0.00ns  loc: kmeans.c:63
+_ifconv:26  br label %3
+
+ST_7: StgValue_117 (113)  [1/1] 1.16ns  loc: kmeans.c:74
+.preheader50.preheader:0  br label %.preheader50
+
+
+ <State 8>: 5.86ns
+ST_8: min1 (115)  [1/1] 0.00ns
+.preheader50:0  %min1 = phi i16 [ %min_2_phi_min1, %_ifconv24 ], [ %min_1, %.preheader50.preheader ]
+
+ST_8: cluster_1 (116)  [1/1] 0.00ns
+.preheader50:1  %cluster_1 = phi i3 [ %p_2, %_ifconv24 ], [ 1, %.preheader50.preheader ]
+
+ST_8: cluster_3_cast (117)  [1/1] 0.00ns  loc: kmeans.c:74
+.preheader50:2  %cluster_3_cast = zext i3 %cluster_1 to i16
+
+ST_8: exitcond9 (118)  [1/1] 1.12ns  loc: kmeans.c:69
+.preheader50:3  %exitcond9 = icmp eq i3 %cluster_1, -4
+
+ST_8: empty_11 (119)  [1/1] 0.00ns
+.preheader50:4  %empty_11 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 3, i64 3, i64 3) nounwind
+
+ST_8: StgValue_123 (120)  [1/1] 0.00ns  loc: kmeans.c:69
+.preheader50:5  br i1 %exitcond9, label %4, label %_ifconv24
+
+ST_8: cluster_load_1 (122)  [1/1] 0.00ns  loc: kmeans.c:71
+_ifconv24:0  %cluster_load_1 = load i16* %cluster
+
+ST_8: ab_3_9_load_1 (123)  [1/1] 0.00ns  loc: kmeans.c:71
+_ifconv24:1  %ab_3_9_load_1 = load i16* %ab_3_9
+
+ST_8: ab_3_10_load_1 (124)  [1/1] 0.00ns  loc: kmeans.c:71
+_ifconv24:2  %ab_3_10_load_1 = load i16* %ab_3_10
+
+ST_8: ab_3_11_load_1 (125)  [1/1] 0.00ns  loc: kmeans.c:71
+_ifconv24:3  %ab_3_11_load_1 = load i16* %ab_3_11
+
+ST_8: tmp_25 (126)  [1/1] 0.00ns  loc: kmeans.c:69
+_ifconv24:4  %tmp_25 = trunc i3 %cluster_1 to i2
+
+ST_8: sel_tmp3 (127)  [1/1] 1.00ns  loc: kmeans.c:71
+_ifconv24:5  %sel_tmp3 = icmp eq i2 %tmp_25, -2
+
+ST_8: ab_3_15 (128)  [1/1] 0.00ns  loc: kmeans.c:71 (grouped into LUT with out node ab_3_17)
+_ifconv24:6  %ab_3_15 = select i1 %sel_tmp3, i16 %ab_3_10_load_1, i16 %ab_3_11_load_1
+
+ST_8: sel_tmp6 (129)  [1/1] 1.00ns  loc: kmeans.c:71
+_ifconv24:7  %sel_tmp6 = icmp eq i2 %tmp_25, 1
+
+ST_8: ab_3_17 (130)  [1/1] 1.04ns  loc: kmeans.c:71 (out node of the LUT)
+_ifconv24:8  %ab_3_17 = select i1 %sel_tmp6, i16 %ab_3_9_load_1, i16 %ab_3_15
+
+ST_8: tmp_15 (131)  [1/1] 1.62ns  loc: kmeans.c:71
+_ifconv24:9  %tmp_15 = icmp slt i16 %ab_3_17, %min1
+
+ST_8: cluster_4_cluster_2 (132)  [1/1] 1.04ns  loc: kmeans.c:71
+_ifconv24:10  %cluster_4_cluster_2 = select i1 %tmp_15, i16 %cluster_3_cast, i16 %cluster_load_1
+
+ST_8: min_2_phi_min1 (133)  [1/1] 1.04ns  loc: kmeans.c:71
+_ifconv24:11  %min_2_phi_min1 = select i1 %tmp_15, i16 %ab_3_17, i16 %min1
+
+ST_8: p_2 (134)  [1/1] 0.63ns  loc: kmeans.c:69
+_ifconv24:12  %p_2 = add i3 1, %cluster_1
+
+ST_8: StgValue_137 (135)  [1/1] 1.16ns  loc: kmeans.c:71
+_ifconv24:13  store i16 %cluster_4_cluster_2, i16* %cluster
+
+ST_8: StgValue_138 (136)  [1/1] 0.00ns  loc: kmeans.c:69
+_ifconv24:14  br label %.preheader50
+
+ST_8: cluster_load (138)  [1/1] 0.00ns  loc: kmeans.c:78
+:0  %cluster_load = load i16* %cluster
+
+ST_8: tmp_14 (139)  [1/1] 1.62ns  loc: kmeans.c:78
+:1  %tmp_14 = icmp eq i16 %cluster_load, 0
+
+ST_8: StgValue_141 (140)  [1/1] 0.00ns  loc: kmeans.c:78
+:2  br i1 %tmp_14, label %5, label %._crit_edge41
+
+ST_8: p_sum3 (142)  [1/1] 1.53ns  loc: kmeans.c:80
+:0  %p_sum3 = add i16 %tmp_3, %tmp_cast
+
+ST_8: p_sum3_cast (143)  [1/1] 0.00ns  loc: kmeans.c:80
+:1  %p_sum3_cast = zext i16 %p_sum3 to i32
+
+ST_8: p_addr_7 (144)  [1/1] 0.00ns  loc: kmeans.c:80
+:2  %p_addr_7 = getelementptr inbounds [65536 x i16]* %empty, i32 0, i32 %p_sum3_cast
+
+ST_8: StgValue_145 (145)  [1/1] 2.10ns  loc: kmeans.c:80
+:3  store i16 %r, i16* %p_addr_7, align 2
+
+ST_8: StgValue_146 (146)  [1/1] 0.00ns  loc: kmeans.c:83
+:4  br label %._crit_edge41
+
+ST_8: cluster_load_2 (148)  [1/1] 0.00ns  loc: kmeans.c:84
+._crit_edge41:0  %cluster_load_2 = load i16* %cluster
+
+ST_8: tmp_17 (149)  [1/1] 1.62ns  loc: kmeans.c:84
+._crit_edge41:1  %tmp_17 = icmp eq i16 %cluster_load_2, 1
+
+ST_8: StgValue_149 (150)  [1/1] 0.00ns  loc: kmeans.c:84
+._crit_edge41:2  br i1 %tmp_17, label %6, label %._crit_edge42
+
+ST_8: p_sum4 (152)  [1/1] 1.53ns  loc: kmeans.c:86
+:0  %p_sum4 = add i16 %tmp_3, %tmp_cast
+
+ST_8: p_sum4_cast (153)  [1/1] 0.00ns  loc: kmeans.c:86
+:1  %p_sum4_cast = zext i16 %p_sum4 to i32
+
+ST_8: p_addr_9 (154)  [1/1] 0.00ns  loc: kmeans.c:86
+:2  %p_addr_9 = getelementptr inbounds [65536 x i16]* %empty_3, i32 0, i32 %p_sum4_cast
+
+ST_8: StgValue_153 (155)  [1/1] 2.10ns  loc: kmeans.c:86
+:3  store i16 %r, i16* %p_addr_9, align 2
+
+ST_8: StgValue_154 (156)  [1/1] 0.00ns  loc: kmeans.c:88
+:4  br label %._crit_edge42
+
+ST_8: cluster_load_3 (158)  [1/1] 0.00ns  loc: kmeans.c:89
+._crit_edge42:0  %cluster_load_3 = load i16* %cluster
+
+ST_8: tmp_19 (159)  [1/1] 1.62ns  loc: kmeans.c:89
+._crit_edge42:1  %tmp_19 = icmp eq i16 %cluster_load_3, 2
+
+ST_8: StgValue_157 (160)  [1/1] 0.00ns  loc: kmeans.c:89
+._crit_edge42:2  br i1 %tmp_19, label %7, label %._crit_edge43
+
+ST_8: p_sum5 (162)  [1/1] 1.53ns  loc: kmeans.c:91
+:0  %p_sum5 = add i16 %tmp_3, %tmp_cast
+
+ST_8: p_sum5_cast (163)  [1/1] 0.00ns  loc: kmeans.c:91
+:1  %p_sum5_cast = zext i16 %p_sum5 to i32
+
+ST_8: p_addr_10 (164)  [1/1] 0.00ns  loc: kmeans.c:91
+:2  %p_addr_10 = getelementptr inbounds [65536 x i16]* %empty_4, i32 0, i32 %p_sum5_cast
+
+ST_8: StgValue_161 (165)  [1/1] 2.10ns  loc: kmeans.c:91
+:3  store i16 %r, i16* %p_addr_10, align 2
+
+ST_8: StgValue_162 (166)  [1/1] 0.00ns  loc: kmeans.c:93
+:4  br label %._crit_edge43
+
+ST_8: cluster_load_4 (168)  [1/1] 0.00ns  loc: kmeans.c:94
+._crit_edge43:0  %cluster_load_4 = load i16* %cluster
+
+ST_8: tmp_20 (169)  [1/1] 1.62ns  loc: kmeans.c:94
+._crit_edge43:1  %tmp_20 = icmp eq i16 %cluster_load_4, 3
+
+ST_8: StgValue_165 (170)  [1/1] 0.00ns  loc: kmeans.c:94
+._crit_edge43:2  br i1 %tmp_20, label %8, label %._crit_edge44
+
+ST_8: p_sum6 (172)  [1/1] 1.53ns  loc: kmeans.c:96
+:0  %p_sum6 = add i16 %tmp_3, %tmp_cast
+
+ST_8: p_sum6_cast (173)  [1/1] 0.00ns  loc: kmeans.c:96
+:1  %p_sum6_cast = zext i16 %p_sum6 to i32
+
+ST_8: p_addr_11 (174)  [1/1] 0.00ns  loc: kmeans.c:96
+:2  %p_addr_11 = getelementptr inbounds [65536 x i16]* %empty_5, i32 0, i32 %p_sum6_cast
+
+ST_8: StgValue_169 (175)  [1/1] 2.10ns  loc: kmeans.c:96
+:3  store i16 %r, i16* %p_addr_11, align 2
+
+ST_8: StgValue_170 (176)  [1/1] 0.00ns  loc: kmeans.c:98
+:4  br label %._crit_edge44
+
+ST_8: StgValue_171 (178)  [1/1] 0.00ns  loc: kmeans.c:59
+._crit_edge44:0  br label %.preheader38
+
+
+ <State 9>: 1.43ns
+ST_9: l (184)  [1/1] 0.00ns
+.preheader36:0  %l = phi i9 [ %l_1, %.preheader36.loopexit ], [ 0, %.preheader36.preheader ]
+
+ST_9: exitcond6 (185)  [1/1] 1.42ns  loc: kmeans.c:125
+.preheader36:1  %exitcond6 = icmp eq i9 %l, -256
+
+ST_9: empty_12 (186)  [1/1] 0.00ns
+.preheader36:2  %empty_12 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 256, i64 256, i64 256) nounwind
+
+ST_9: l_1 (187)  [1/1] 1.43ns  loc: kmeans.c:125
+.preheader36:3  %l_1 = add i9 %l, 1
+
+ST_9: StgValue_176 (188)  [1/1] 0.00ns  loc: kmeans.c:125
+.preheader36:4  br i1 %exitcond6, label %14, label %.preheader.preheader
+
+ST_9: tmp_s (190)  [1/1] 0.00ns  loc: kmeans.c:125
+.preheader.preheader:0  %tmp_s = call i17 @_ssdm_op_BitConcatenate.i17.i9.i8(i9 %l, i8 0)
+
+ST_9: tmp_24_cast (191)  [1/1] 0.00ns  loc: kmeans.c:125
+.preheader.preheader:1  %tmp_24_cast = zext i17 %tmp_s to i18
+
+ST_9: tmp_10 (192)  [1/1] 0.00ns  loc: kmeans.c:125
+.preheader.preheader:2  %tmp_10 = trunc i9 %l to i8
+
+ST_9: tmp_9 (193)  [1/1] 0.00ns  loc: kmeans.c:131
+.preheader.preheader:3  %tmp_9 = call i16 @_ssdm_op_BitConcatenate.i16.i8.i8(i8 %tmp_10, i8 0)
+
+ST_9: StgValue_181 (194)  [1/1] 1.16ns  loc: kmeans.c:127
+.preheader.preheader:4  br label %.preheader
+
+ST_9: StgValue_182 (253)  [1/1] 0.00ns  loc: kmeans.c:169
+:0  ret void
+
+
+ <State 10>: 3.63ns
+ST_10: q (196)  [1/1] 0.00ns
+.preheader:0  %q = phi i9 [ %q_1, %._crit_edge48 ], [ 0, %.preheader.preheader ]
+
+ST_10: exitcond (197)  [1/1] 1.42ns  loc: kmeans.c:127
+.preheader:1  %exitcond = icmp eq i9 %q, -256
+
+ST_10: empty_13 (198)  [1/1] 0.00ns
+.preheader:2  %empty_13 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 256, i64 256, i64 256) nounwind
+
+ST_10: q_1 (199)  [1/1] 1.43ns  loc: kmeans.c:127
+.preheader:3  %q_1 = add i9 %q, 1
+
+ST_10: StgValue_187 (200)  [1/1] 0.00ns  loc: kmeans.c:127
+.preheader:4  br i1 %exitcond, label %.preheader36.loopexit, label %9
+
+ST_10: tmp_5_cast (202)  [1/1] 0.00ns  loc: kmeans.c:148
+:0  %tmp_5_cast = zext i9 %q to i18
+
+ST_10: tmp_22 (203)  [1/1] 1.63ns  loc: kmeans.c:148
+:1  %tmp_22 = add i18 %tmp_24_cast, %tmp_5_cast
+
+ST_10: tmp_27_cast (204)  [1/1] 0.00ns  loc: kmeans.c:148
+:2  %tmp_27_cast = zext i18 %tmp_22 to i32
+
+ST_10: final_addr (205)  [1/1] 0.00ns  loc: kmeans.c:148
+:3  %final_addr = getelementptr [65536 x i16]* %final, i32 0, i32 %tmp_27_cast
+
+ST_10: tmp_11_cast (206)  [1/1] 0.00ns  loc: kmeans.c:131
+:4  %tmp_11_cast = zext i9 %q to i16
+
+ST_10: p_sum (207)  [1/1] 1.53ns  loc: kmeans.c:131
+:5  %p_sum = add i16 %tmp_11_cast, %tmp_9
+
+ST_10: p_sum_cast (208)  [1/1] 0.00ns  loc: kmeans.c:131
+:6  %p_sum_cast = zext i16 %p_sum to i32
+
+ST_10: p_addr_4 (209)  [1/1] 0.00ns  loc: kmeans.c:131
+:7  %p_addr_4 = getelementptr inbounds [65536 x i16]* %empty, i32 0, i32 %p_sum_cast
+
+ST_10: empty_14 (210)  [2/2] 2.10ns  loc: kmeans.c:131
+:8  %empty_14 = load i16* %p_addr_4, align 2
+
+ST_10: StgValue_197 (251)  [1/1] 0.00ns
+.preheader36.loopexit:0  br label %.preheader36
+
+
+ <State 11>: 3.72ns
+ST_11: empty_14 (210)  [1/2] 2.10ns  loc: kmeans.c:131
+:8  %empty_14 = load i16* %p_addr_4, align 2
+
+ST_11: tmp_7 (211)  [1/1] 1.62ns  loc: kmeans.c:131
+:9  %tmp_7 = icmp sgt i16 %empty_14, 0
+
+ST_11: StgValue_200 (212)  [1/1] 0.00ns  loc: kmeans.c:131
+:10  br i1 %tmp_7, label %10, label %._crit_edge45
+
+ST_11: StgValue_201 (214)  [1/1] 2.10ns  loc: kmeans.c:133
+:0  store i16 50, i16* %p_addr_4, align 2
+
+ST_11: StgValue_202 (215)  [1/1] 0.00ns  loc: kmeans.c:134
+:1  br label %._crit_edge45
+
+ST_11: p_addr_5 (217)  [1/1] 0.00ns  loc: kmeans.c:135
+._crit_edge45:0  %p_addr_5 = getelementptr inbounds [65536 x i16]* %empty_3, i32 0, i32 %p_sum_cast
+
+ST_11: empty_15 (218)  [2/2] 2.10ns  loc: kmeans.c:135
+._crit_edge45:1  %empty_15 = load i16* %p_addr_5, align 2
+
+
+ <State 12>: 3.72ns
+ST_12: empty_15 (218)  [1/2] 2.10ns  loc: kmeans.c:135
+._crit_edge45:1  %empty_15 = load i16* %p_addr_5, align 2
+
+ST_12: tmp_12 (219)  [1/1] 1.62ns  loc: kmeans.c:135
+._crit_edge45:2  %tmp_12 = icmp sgt i16 %empty_15, 0
+
+ST_12: StgValue_207 (220)  [1/1] 0.00ns  loc: kmeans.c:135
+._crit_edge45:3  br i1 %tmp_12, label %11, label %._crit_edge46
+
+ST_12: StgValue_208 (222)  [1/1] 2.10ns  loc: kmeans.c:137
+:0  store i16 70, i16* %p_addr_5, align 2
+
+ST_12: StgValue_209 (223)  [1/1] 0.00ns  loc: kmeans.c:138
+:1  br label %._crit_edge46
+
+ST_12: p_addr_6 (225)  [1/1] 0.00ns  loc: kmeans.c:139
+._crit_edge46:0  %p_addr_6 = getelementptr inbounds [65536 x i16]* %empty_4, i32 0, i32 %p_sum_cast
+
+ST_12: empty_16 (226)  [2/2] 2.10ns  loc: kmeans.c:139
+._crit_edge46:1  %empty_16 = load i16* %p_addr_6, align 2
+
+
+ <State 13>: 3.72ns
+ST_13: empty_16 (226)  [1/2] 2.10ns  loc: kmeans.c:139
+._crit_edge46:1  %empty_16 = load i16* %p_addr_6, align 2
+
+ST_13: tmp_13 (227)  [1/1] 1.62ns  loc: kmeans.c:139
+._crit_edge46:2  %tmp_13 = icmp sgt i16 %empty_16, 0
+
+ST_13: StgValue_214 (228)  [1/1] 0.00ns  loc: kmeans.c:139
+._crit_edge46:3  br i1 %tmp_13, label %12, label %._crit_edge47
+
+ST_13: StgValue_215 (230)  [1/1] 2.10ns  loc: kmeans.c:141
+:0  store i16 40, i16* %p_addr_6, align 2
+
+ST_13: StgValue_216 (231)  [1/1] 0.00ns  loc: kmeans.c:142
+:1  br label %._crit_edge47
+
+ST_13: p_addr_8 (233)  [1/1] 0.00ns  loc: kmeans.c:143
+._crit_edge47:0  %p_addr_8 = getelementptr inbounds [65536 x i16]* %empty_5, i32 0, i32 %p_sum_cast
+
+ST_13: empty_17 (234)  [2/2] 2.10ns  loc: kmeans.c:143
+._crit_edge47:1  %empty_17 = load i16* %p_addr_8, align 2
+
+
+ <State 14>: 3.72ns
+ST_14: empty_17 (234)  [1/2] 2.10ns  loc: kmeans.c:143
+._crit_edge47:1  %empty_17 = load i16* %p_addr_8, align 2
+
+ST_14: tmp_16 (235)  [1/1] 1.62ns  loc: kmeans.c:143
+._crit_edge47:2  %tmp_16 = icmp sgt i16 %empty_17, 0
+
+ST_14: StgValue_221 (236)  [1/1] 0.00ns  loc: kmeans.c:143
+._crit_edge47:3  br i1 %tmp_16, label %13, label %._crit_edge48
+
+ST_14: StgValue_222 (238)  [1/1] 2.10ns  loc: kmeans.c:145
+:0  store i16 220, i16* %p_addr_8, align 2
+
+ST_14: StgValue_223 (239)  [1/1] 0.00ns  loc: kmeans.c:146
+:1  br label %._crit_edge48
+
+
+ <State 15>: 2.10ns
+ST_15: empty_18 (241)  [2/2] 2.10ns  loc: kmeans.c:148
+._crit_edge48:0  %empty_18 = load i16* %p_addr_4, align 2
+
+ST_15: empty_19 (242)  [2/2] 2.10ns  loc: kmeans.c:148
+._crit_edge48:1  %empty_19 = load i16* %p_addr_5, align 2
+
+ST_15: empty_20 (243)  [2/2] 2.10ns  loc: kmeans.c:148
+._crit_edge48:2  %empty_20 = load i16* %p_addr_6, align 2
+
+ST_15: empty_21 (244)  [2/2] 2.10ns  loc: kmeans.c:148
+._crit_edge48:3  %empty_21 = load i16* %p_addr_8, align 2
+
+
+ <State 16>: 7.16ns
+ST_16: empty_18 (241)  [1/2] 2.10ns  loc: kmeans.c:148
+._crit_edge48:0  %empty_18 = load i16* %p_addr_4, align 2
+
+ST_16: empty_19 (242)  [1/2] 2.10ns  loc: kmeans.c:148
+._crit_edge48:1  %empty_19 = load i16* %p_addr_5, align 2
+
+ST_16: empty_20 (243)  [1/2] 2.10ns  loc: kmeans.c:148
+._crit_edge48:2  %empty_20 = load i16* %p_addr_6, align 2
+
+ST_16: empty_21 (244)  [1/2] 2.10ns  loc: kmeans.c:148
+._crit_edge48:3  %empty_21 = load i16* %p_addr_8, align 2
+
+ST_16: tmp1 (245)  [1/1] 1.43ns  loc: kmeans.c:148
+._crit_edge48:4  %tmp1 = add i16 %empty_19, %empty_18
+
+ST_16: tmp2 (246)  [1/1] 1.53ns  loc: kmeans.c:148
+._crit_edge48:5  %tmp2 = add i16 %empty_20, %empty_21
+
+ST_16: tmp_18 (247)  [1/1] 1.43ns  loc: kmeans.c:148
+._crit_edge48:6  %tmp_18 = add i16 %tmp2, %tmp1
+
+ST_16: StgValue_235 (248)  [1/1] 2.10ns  loc: kmeans.c:148
+._crit_edge48:7  store i16 %tmp_18, i16* %final_addr, align 2
+
+ST_16: StgValue_236 (249)  [1/1] 0.00ns  loc: kmeans.c:127
+._crit_edge48:8  br label %.preheader
+
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 10ns, clock uncertainty: 1.25ns.
+
+ <State 1>: 1.16ns
+The critical path consists of the following:
+	multiplexor before 'phi' operation ('s') with incoming values : ('s', kmeans.c:39) [12]  (1.16 ns)
+
+ <State 2>: 1.43ns
+The critical path consists of the following:
+	'phi' operation ('s') with incoming values : ('s', kmeans.c:39) [12]  (0 ns)
+	'add' operation ('s', kmeans.c:39) [15]  (1.43 ns)
+
+ <State 3>: 3.63ns
+The critical path consists of the following:
+	'phi' operation ('t') with incoming values : ('t', kmeans.c:41) [22]  (0 ns)
+	'add' operation ('p_sum1', kmeans.c:43) [29]  (1.53 ns)
+	'getelementptr' operation ('p_addr_2', kmeans.c:45) [35]  (0 ns)
+	'store' operation (kmeans.c:45) of constant 0 on array 'empty_4', kmeans.c:19 [36]  (2.1 ns)
+
+ <State 4>: 1.43ns
+The critical path consists of the following:
+	'phi' operation ('i') with incoming values : ('i', kmeans.c:57) [51]  (0 ns)
+	'add' operation ('i', kmeans.c:57) [54]  (1.43 ns)
+
+ <State 5>: 3.73ns
+The critical path consists of the following:
+	'phi' operation ('j') with incoming values : ('j', kmeans.c:59) [63]  (0 ns)
+	'add' operation ('tmp_21', kmeans.c:61) [70]  (1.63 ns)
+	'getelementptr' operation ('image_in_addr', kmeans.c:61) [72]  (0 ns)
+	'load' operation ('r', kmeans.c:61) on array 'image_in' [74]  (2.1 ns)
+
+ <State 6>: 2.1ns
+The critical path consists of the following:
+	'load' operation ('r', kmeans.c:61) on array 'image_in' [74]  (2.1 ns)
+
+ <State 7>: 6.88ns
+The critical path consists of the following:
+	'phi' operation ('p') with incoming values : ('p', kmeans.c:63) [78]  (0 ns)
+	'mux' operation ('tmp', kmeans.c:63) [89]  (0 ns)
+	'sub' operation ('tmp_8', kmeans.c:65) [90]  (1.93 ns)
+	'icmp' operation ('abscond', kmeans.c:65) [92]  (1.83 ns)
+	'select' operation ('ab[0]', kmeans.c:65) [94]  (1.04 ns)
+	'select' operation ('ab[3]', kmeans.c:63) [101]  (0 ns)
+	'select' operation ('ab[3]', kmeans.c:63) [102]  (1.04 ns)
+	'select' operation ('ab[3]', kmeans.c:63) [103]  (1.04 ns)
+	'store' operation (kmeans.c:65) of variable 'ab[3]', kmeans.c:63 on local variable 'ab[3]' [108]  (0 ns)
+
+ <State 8>: 5.86ns
+The critical path consists of the following:
+	'phi' operation ('p') with incoming values : ('p', kmeans.c:69) [116]  (0 ns)
+	'icmp' operation ('sel_tmp3', kmeans.c:71) [127]  (1 ns)
+	'select' operation ('ab[3]', kmeans.c:71) [128]  (0 ns)
+	'select' operation ('ab[3]', kmeans.c:71) [130]  (1.04 ns)
+	'icmp' operation ('tmp_15', kmeans.c:71) [131]  (1.62 ns)
+	'select' operation ('cluster_4_cluster_2', kmeans.c:71) [132]  (1.04 ns)
+	'store' operation (kmeans.c:71) of variable 'cluster_4_cluster_2', kmeans.c:71 on local variable 'cluster' [135]  (1.16 ns)
+
+ <State 9>: 1.43ns
+The critical path consists of the following:
+	'phi' operation ('l') with incoming values : ('l', kmeans.c:125) [184]  (0 ns)
+	'add' operation ('l', kmeans.c:125) [187]  (1.43 ns)
+
+ <State 10>: 3.63ns
+The critical path consists of the following:
+	'phi' operation ('q') with incoming values : ('q', kmeans.c:127) [196]  (0 ns)
+	'add' operation ('p_sum', kmeans.c:131) [207]  (1.53 ns)
+	'getelementptr' operation ('p_addr_4', kmeans.c:131) [209]  (0 ns)
+	'load' operation ('empty_14', kmeans.c:131) on array 'empty', kmeans.c:17 [210]  (2.1 ns)
+
+ <State 11>: 3.72ns
+The critical path consists of the following:
+	'load' operation ('empty_14', kmeans.c:131) on array 'empty', kmeans.c:17 [210]  (2.1 ns)
+	'icmp' operation ('tmp_7', kmeans.c:131) [211]  (1.62 ns)
+
+ <State 12>: 3.72ns
+The critical path consists of the following:
+	'load' operation ('empty_15', kmeans.c:135) on array 'empty_3', kmeans.c:18 [218]  (2.1 ns)
+	'icmp' operation ('tmp_12', kmeans.c:135) [219]  (1.62 ns)
+
+ <State 13>: 3.72ns
+The critical path consists of the following:
+	'load' operation ('empty_16', kmeans.c:139) on array 'empty_4', kmeans.c:19 [226]  (2.1 ns)
+	'icmp' operation ('tmp_13', kmeans.c:139) [227]  (1.62 ns)
+
+ <State 14>: 3.72ns
+The critical path consists of the following:
+	'load' operation ('empty_17', kmeans.c:143) on array 'empty_5', kmeans.c:20 [234]  (2.1 ns)
+	'icmp' operation ('tmp_16', kmeans.c:143) [235]  (1.62 ns)
+
+ <State 15>: 2.1ns
+The critical path consists of the following:
+	'load' operation ('empty_18', kmeans.c:148) on array 'empty', kmeans.c:17 [241]  (2.1 ns)
+
+ <State 16>: 7.16ns
+The critical path consists of the following:
+	'load' operation ('empty_20', kmeans.c:148) on array 'empty_4', kmeans.c:19 [243]  (2.1 ns)
+	'add' operation ('tmp2', kmeans.c:148) [246]  (1.53 ns)
+	'add' operation ('tmp_18', kmeans.c:148) [247]  (1.43 ns)
+	'store' operation (kmeans.c:148) of variable 'tmp_18', kmeans.c:148 on array 'final' [248]  (2.1 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+	State 8
+	State 9
+	State 10
+	State 11
+	State 12
+	State 13
+	State 14
+	State 15
+	State 16
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

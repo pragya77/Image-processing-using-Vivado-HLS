@@ -1,0 +1,7 @@
+sv xil_defaultlib "kmeans.autotb.v"
+sv xil_defaultlib "AESL_automem_image_in.v"
+sv xil_defaultlib "AESL_automem_final.v"
+sv xil_defaultlib "kmeans.v"
+sv xil_defaultlib "kmeans_mux_42_32_1.v"
+sv xil_defaultlib "kmeans_empty.v"
+

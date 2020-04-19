@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xd:acceleratorMap xmlns:xd="http://www.xilinx.com/xidane" xd:functionName="sobel" xd:componentRef="sobel" xd:initiationInterval="2976409" xd:clockPeriod="10.000000" xd:sequential="true" xd:hostMachine="64" xd:reset="control">
+  <xd:controlReg xd:name="control" xd:interfaceRef="ap_ctrl" xd:busTypeRef="acc_handshake" xd:type="acc_handshake"/>
+  <xd:arg xd:name="input_image_q0" xd:originalName="input_image_q0" xd:direction="in" xd:interfaceRef="input_image_q0" xd:busTypeRef="ap_memory" xd:arraySize="65536" xd:dataWidth="32"/>
+  <xd:arg xd:name="input_image_q1" xd:originalName="input_image_q1" xd:direction="in" xd:interfaceRef="input_image_q1" xd:busTypeRef="ap_memory" xd:arraySize="65536" xd:dataWidth="32"/>
+  <xd:arg xd:name="output_image_d0" xd:originalName="output_image_d0" xd:direction="out" xd:interfaceRef="output_image_d0" xd:busTypeRef="ap_memory" xd:arraySize="65536" xd:dataWidth="32"/>
+  <xd:arg xd:name="output_image_d1" xd:originalName="output_image_d1" xd:direction="out" xd:interfaceRef="output_image_d1" xd:busTypeRef="ap_memory" xd:arraySize="65536" xd:dataWidth="32"/>
+  <xd:latencyEstimates xd:best-case="2714264" xd:worst-case="2976408" xd:average-case="2845336"/>
+  <xd:resourceEstimates xd:LUT="1514" xd:FF="960" xd:BRAM="128" xd:DSP="0"/>
+</xd:acceleratorMap>

@@ -1,0 +1,10 @@
+0.6
+2016.3
+Oct 10 2016
+19:46:48
+W:/Desktop/sobel1/sobel/solution1/sim/verilog/AESL_automem_input_image.v,1585539108,systemVerilog,,,,AESL_automem_input_image,C:/Xilinx/Vivado/2016.3/bin/../data/xsim/ip/xsim_ip.ini,ieee_proposed=./ieee_proposed,,,,,,
+W:/Desktop/sobel1/sobel/solution1/sim/verilog/AESL_automem_output_image.v,1585539108,systemVerilog,,,,AESL_automem_output_image,C:/Xilinx/Vivado/2016.3/bin/../data/xsim/ip/xsim_ip.ini,ieee_proposed=./ieee_proposed,,,,,,
+W:/Desktop/sobel1/sobel/solution1/sim/verilog/sobel.autotb.v,1585539108,systemVerilog,,,,apatb_sobel_top,C:/Xilinx/Vivado/2016.3/bin/../data/xsim/ip/xsim_ip.ini,ieee_proposed=./ieee_proposed,,,,,,
+W:/Desktop/sobel1/sobel/solution1/sim/verilog/sobel.v,1585539076,systemVerilog,,,,sobel,C:/Xilinx/Vivado/2016.3/bin/../data/xsim/ip/xsim_ip.ini,ieee_proposed=./ieee_proposed,,,,,,
+W:/Desktop/sobel1/sobel/solution1/sim/verilog/sobel_image.v,1585539079,systemVerilog,,,,sobel_image;sobel_image_ram,C:/Xilinx/Vivado/2016.3/bin/../data/xsim/ip/xsim_ip.ini,ieee_proposed=./ieee_proposed,,,,,,
+W:/Desktop/sobel1/sobel/solution1/sim/verilog/sobel_sdiv_32ns_3bkb.v,1585539079,systemVerilog,,,,sobel_sdiv_32ns_3bkb;sobel_sdiv_32ns_3bkb_div;sobel_sdiv_32ns_3bkb_div_u,C:/Xilinx/Vivado/2016.3/bin/../data/xsim/ip/xsim_ip.ini,ieee_proposed=./ieee_proposed,,,,,,

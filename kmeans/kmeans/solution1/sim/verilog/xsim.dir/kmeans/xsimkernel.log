@@ -1,0 +1,7 @@
+Running: xsim.dir/kmeans/xsimk.exe -simmode gui -wdb kmeans.wdb -simrunnum 0 -socket 52044
+Design successfully loaded
+Design Loading Memory Usage: 10728 KB (Peak: 10728 KB)
+Design Loading CPU Usage: 0 ms
+Simulation completed
+Simulation Memory Usage: 12520 KB (Peak: 12520 KB)
+Simulation CPU Usage: 13718 ms

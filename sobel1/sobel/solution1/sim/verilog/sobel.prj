@@ -1,0 +1,7 @@
+sv xil_defaultlib "sobel.autotb.v"
+sv xil_defaultlib "AESL_automem_input_image.v"
+sv xil_defaultlib "AESL_automem_output_image.v"
+sv xil_defaultlib "sobel.v"
+sv xil_defaultlib "sobel_sdiv_32ns_3bkb.v"
+sv xil_defaultlib "sobel_image.v"
+
